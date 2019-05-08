@@ -6,9 +6,10 @@
 
 # In its simplest form, a Rack app is an object that responds to #call and 
 # returns a 'triplet'- an array with 3 items, HTTP response, a hash of HTTP headers, and a body
+require 'socket'
 
 app = Proc.new do |env|
-  ['200', {'Content-Type' => 'text/html'}, ["Hola Cunao! The time is now #{Time.now"]]
+  ['200', {'Content-Type' => 'text/html'}, ["Hola Cunao! The time is now #{Time.now}"]]
 end 
 
 server = TCPServer.new(5678)
@@ -37,3 +38,5 @@ while session = server.accept
   end 
   session.close
 end
+
+
